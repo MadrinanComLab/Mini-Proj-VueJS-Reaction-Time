@@ -33,7 +33,7 @@ export default {
 
         stopTimer() { // THIS WILL BE CALLED ONCE THE USER CLICK THE GREEN BLOCK
             clearInterval(this.timer)
-            console.log(this.reactionTime)
+            this.$emit("end", this.reactionTime) // USING THIS WE'RE ABLE TO SEND THE VALUE OF reactionTime TO App.vue
         }
     },
 }
