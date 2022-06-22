@@ -9,15 +9,17 @@
 
   <!--/ BLOCK COMPONENT WILL BE DISPLAY IF THE isPlaying IS true /-->
   <Block v-if="isPlaying" :delay="delay" @end="endGame"/><!--/ NOTE: @end IS HOW WE LISTEN TO CUSTOM EVENT. /-->
-  <p v-if="score">Reaction Time: {{ score }} ms</p>
+  <!--/ <p v-if="score">Reaction Time: {{ score }} ms</p> /-->
+  <Results v-if="score" :score="score"/>
 </template>
 
 <script>
 import Block from "./components/Block.vue"
+import Results from "./components/Results.vue"
 
 export default {
   name: 'App',
-  components: { Block }, // DON'T FOGET TO REGISTER YOUR IMPORTED COMPONENTS HERE...
+  components: { Block, Results }, // DON'T FOGET TO REGISTER YOUR IMPORTED COMPONENTS HERE...
 
   data() {
     return {
