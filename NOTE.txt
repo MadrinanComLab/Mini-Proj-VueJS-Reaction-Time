@@ -1,0 +1,7 @@
+COMMAND FOR CREATING NEW VUE PROJECT:
+vue create project-name
+
+EXAMPLE: vue create first-project
+
+TO RUN THIS PROJECT, ENTER THIS COMMAND:
+npm run serve
