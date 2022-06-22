@@ -1,5 +1,5 @@
 <template>
-  <div class="block" v-if="showBlock">
+  <div class="block" v-if="showBlock" @click="stopTimer">
       Hit me!
   </div>
 </template>
@@ -9,7 +9,9 @@ export default {
     props: [ "delay" ],
     data() {
         return {
-            showBlock: false
+            showBlock: false,
+            timer: null,
+            reactionTime: 0 // THIS WILL MEASURE HOW FAST THE USER CLICK THE GREEN BLOCK
         }
     },
 
@@ -18,7 +20,21 @@ export default {
         // TIMER WILL BE INITIALIZED HERE
         setTimeout(() => {
             this.showBlock = true
+            this.startTimer() // INITIALIZING TIMER FOR GREEN BLOCK
         }, this.delay) // this.delay IS THE PASSED DATA IN PROPS
+    },
+
+    methods: {
+        startTimer() { // THIS WILL BE CALLED ONCE THE GREEN BLOCK WAS DISPLAYED
+            this.startTimer = setInterval(() => {
+                this.reactionTime += 10
+            }, 10)
+        },
+
+        stopTimer() { // THIS WILL BE CALLED ONCE THE USER CLICK THE GREEN BLOCK
+            clearInterval(this.timer)
+            console.log(this.reactionTime)
+        }
     },
 }
 </script>
